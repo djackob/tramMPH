@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <meta charset="UTF-8">
-    <title>Registro Anio</title>
+    <title>Registro Año</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="${pageContext.request.contextPath}/js/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/js/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de años</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 

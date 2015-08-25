@@ -42,7 +42,7 @@
             <section class="content-header">
                 <h1>
                     Registro de Area
-                    <small>Administracion de usuarios</small>
+                    <small>Administracion de Area</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-unlock-alt"></i> Area</a></li>
@@ -112,7 +112,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
       <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSArea.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/tramite/JSArea.js" type="text/javascript"></script>
     
 </body>
 </html>
