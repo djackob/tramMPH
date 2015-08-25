@@ -77,11 +77,11 @@
                                 <div class="box-body">
                                     <!-- Date range -->
    <div class="form-group">
-                                        <label>Denominacion :</label>
-                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominacion">
+                                        <label>Denominación :</label>
+                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominación">
                                     </div>   <div class="form-group">
-                                        <label>Paginainicio :</label>
-                                        <input obligatorio id="txtPaginainicio" class="form-control input-sm" type="text" placeholder="Ingrese Paginainicio">
+                                        <label>Pagina de Inicio :</label>
+                                        <input obligatorio id="txtPaginainicio" class="form-control input-sm" type="text" placeholder="Ingrese Pagina de inicio">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <button id="btnNuevo" type="button" class="btn btn-primary btn-sm">Guardar</button>
@@ -114,8 +114,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSModulo.js" type="text/javascript"></script>
+     <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSModulo.js" type="text/javascript"></script>
     
 </body>
 </html>

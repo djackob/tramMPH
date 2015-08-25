@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,14 +71,14 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Modulo",
-        colNames: ["Edit", "Del","idmodulo","denominacion","paginainicio","estado"],
+        colNames: ["Editar", "Eliminar", "idmodulo", "Nombre de Módulo", "Página de Inicio", "estado"],
         colModel: [
             {
                 name: 'edit',
                 index: 'edit',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 45,
                 search: false,
                 hidden: false
             },
@@ -86,35 +87,35 @@ function crearGrilla() {
                 index: 'del',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 60,
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idmodulo',
                 index: 'idmodulo',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
-                width: 150,
+                width: 180,
                 hidden: false
-            },{
+            }, {
                 name: 'paginainicio',
                 index: 'paginainicio',
                 editable: false,
-                width: 150,
+                width: 180,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
-            }        ],
+                hidden: true
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -125,7 +126,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/ModuloController/listarRegistrosModuloBE.htm', {poModuloBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/ModuloController/listarRegistrosModuloBE.htm', {poModuloBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -138,12 +139,12 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Modulo = {
- idmodulo: $('#txtIdmodulo').val(),
- denominacion: $('#txtDenominacion').val(),
- paginainicio: $('#txtPaginainicio').val(),
- estado: true
+                idmodulo: $('#txtIdmodulo').val(),
+                denominacion: $('#txtDenominacion').val(),
+                paginainicio: $('#txtPaginainicio').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/ModuloController/insertarModuloBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/ModuloController/insertarModuloBE.htm', {poModuloBE: Modulo}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -152,6 +153,11 @@ function save() {
                     cargarGrilla();
 
                 }
+
+                if (response == -1) {
+                    bootbox.alert(Mensajes.moduloDuplicado);
+                }
+
             });
             break;
         case -1:
@@ -174,7 +180,7 @@ function edit(id) {
             $('#txtIdmodulo').val(rowData.idmodulo);
             $('#txtDenominacion').val(rowData.denominacion);
             $('#txtPaginainicio').val(rowData.paginainicio);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -188,12 +194,12 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Modulo = {
- idmodulo: $('#container').data('idedit'),
- denominacion: $('#txtDenominacion').val(),
- paginainicio: $('#txtPaginainicio').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/ModuloController/actualizarModuloBE.htm', {poModuloBE: Modulo}, false, function(response) {
+                idmodulo: $('#container').data('idedit'),
+                denominacion: $('#txtDenominacion').val(),
+                paginainicio: $('#txtPaginainicio').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/ModuloController/actualizarModuloBE.htm', {poModuloBE: Modulo}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -215,12 +221,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Modulo = {
             IndOpSp: 2,
             idmodulo: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/ModuloController/eliminarModuloBE.htm', {poModuloBE: Modulo}, false, function(response) {
+        $.ajaxCall(urlApp + '/ModuloController/eliminarModuloBE.htm', {poModuloBE: Modulo}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -231,15 +237,16 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
         else {
-
+            
         }
     });
 
 
-} function loadCombos() {
+}
+function loadCombos() {
 }

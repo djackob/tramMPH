@@ -25,6 +25,7 @@ var Mensajes = {
     deseaEliminarDia: '¿Desea eliminar layer Dia?',
     actualizacionMesaCorrecta: '<i class="fa fa-exclamation-triangle fa-2x"></i> La actualizacion del Mesa fue correctamente ejecutado.',
     anioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El año registrado ya existe.',
+    moduloDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El módulo que desea registrar ya existe.',
 };
 
 var Texto = {

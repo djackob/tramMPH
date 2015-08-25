@@ -8,7 +8,7 @@ package mph.tramitedoc.da;
         connectionString = "jdbc:postgresql://192.168.1.136:5432/bdtramite";
         driverConnection = "org.postgresql.Driver";
         user="postgres";
-        password="1234";
+        password="123456";
    }
     public String getPassword() {
         return password;
