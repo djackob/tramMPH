@@ -5,7 +5,7 @@ package mph.tramitedoc.da;
     private String user;
     private String password;
     public BaseDA() {
-        connectionString = "jdbc:postgresql://localhost:5432/bdtramite";
+        connectionString = "jdbc:postgresql://192.168.1.136:5432/bdtramite";
         driverConnection = "org.postgresql.Driver";
         user="postgres";
         password="1234";
