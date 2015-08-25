@@ -71,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Area",
-        colNames: ["Edit", "Del", "idarea", "Denominacion", "estado"],
+        colNames: ["Edit", "Del", "idarea", "Denominacionaaaa", "estado"],
         colModel: [
             {
                 name: 'edit',
