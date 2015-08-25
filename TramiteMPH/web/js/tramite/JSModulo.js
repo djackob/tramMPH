@@ -242,7 +242,7 @@ function del(id) {
             eliminar();
         }
         else {
-            
+
         }
     });
 

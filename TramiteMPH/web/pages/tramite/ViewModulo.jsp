@@ -78,10 +78,10 @@
                                     <!-- Date range -->
    <div class="form-group">
                                         <label>Denominación :</label>
-                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominación">
+                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominación" maxlength="100">
                                     </div>   <div class="form-group">
                                         <label>Pagina de Inicio :</label>
-                                        <input obligatorio id="txtPaginainicio" class="form-control input-sm" type="text" placeholder="Ingrese Pagina de inicio">
+                                        <input obligatorio id="txtPaginainicio" class="form-control input-sm" type="text" placeholder="Ingrese Pagina de inicio" maxlength="100">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <button id="btnNuevo" type="button" class="btn btn-primary btn-sm">Guardar</button>

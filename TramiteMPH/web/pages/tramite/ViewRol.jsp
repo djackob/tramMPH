@@ -78,7 +78,7 @@
                                     <!-- Date range -->
    <div class="form-group">
                                         <label>Denominacion :</label>
-                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominacion">
+                                        <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominación" maxlength="100">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <button id="btnNuevo" type="button" class="btn btn-primary btn-sm">Guardar</button>

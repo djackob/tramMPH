@@ -70,14 +70,14 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Rol",
-        colNames: ["Edit", "Del","idrol","denominacion","estado"],
+        colNames: ["Editar", "Eliminar","idrol","Denominación","estado"],
         colModel: [
             {
                 name: 'edit',
                 index: 'edit',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 45,
                 search: false,
                 hidden: false
             },
@@ -86,7 +86,7 @@ function crearGrilla() {
                 index: 'del',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 60,
                 search: false,
                 hidden: false
             },
@@ -95,19 +95,19 @@ function crearGrilla() {
                 index: 'idrol',
                 editable: false,
                 width: 150,
-                hidden: false
+                hidden: true
             },{
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
-                width: 150,
+                width: 180,
                 hidden: false
             },{
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
+                hidden: true
             }        ],
         pager: '#pager',
         //onSelectRow: viewGeometry,
@@ -136,7 +136,7 @@ function save() {
  denominacion: $('#txtDenominacion').val(),
  estado: true
             };
-            $.ajaxCall(urlApp +'/RolController/insertarRolBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp +'/RolController/insertarRolBE.htm', {poRolBE: Rol}, false, function(response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -144,6 +144,10 @@ function save() {
                     $.LimpiarForm('#form');
                     cargarGrilla();
 
+                }
+                
+                if (response==-1){
+                    bootbox.alert(Mensajes.rolDuplicado);
                 }
             });
             break;
