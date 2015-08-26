@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Cargo",
-        colNames: ["Edit", "Del","idcargo","denominacion","estado"],
+        colNames: ["Edit", "Del", "idcargo", "denominacion", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -90,25 +91,25 @@ function crearGrilla() {
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idcargo',
                 index: 'idcargo',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
-                width: 150,
+                width: 350,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
-            }        ],
+                hidden: true
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -119,7 +120,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/CargoController/listarRegistrosCargoBE.htm', {poCargoBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/CargoController/listarRegistrosCargoBE.htm', {poCargoBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -132,11 +133,11 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Cargo = {
- idcargo: $('#txtIdcargo').val(),
- denominacion: $('#txtDenominacion').val(),
- estado: true
+                idcargo: $('#txtIdcargo').val(),
+                denominacion: $('#txtDenominacion').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/CargoController/insertarCargoBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/CargoController/insertarCargoBE.htm', {poCargoBE: Cargo}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -166,7 +167,7 @@ function edit(id) {
         if (rowData.idcargo === id.toString()) {
             $('#txtIdcargo').val(rowData.idcargo);
             $('#txtDenominacion').val(rowData.denominacion);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -180,11 +181,11 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Cargo = {
- idcargo: $('#container').data('idedit'),
- denominacion: $('#txtDenominacion').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/CargoController/actualizarCargoBE.htm', {poCargoBE: Cargo}, false, function(response) {
+                idcargo: $('#container').data('idedit'),
+                denominacion: $('#txtDenominacion').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/CargoController/actualizarCargoBE.htm', {poCargoBE: Cargo}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -206,12 +207,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Cargo = {
             IndOpSp: 2,
             idcargo: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/CargoController/eliminarCargoBE.htm', {poCargoBE: Cargo}, false, function(response) {
+        $.ajaxCall(urlApp + '/CargoController/eliminarCargoBE.htm', {poCargoBE: Cargo}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -222,7 +223,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -232,5 +233,6 @@ function del(id) {
     });
 
 
-} function loadCombos() {
+}
+function loadCombos() {
 }
