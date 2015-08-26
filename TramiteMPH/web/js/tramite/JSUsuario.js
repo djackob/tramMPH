@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,14 +71,14 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Usuario",
-        colNames: ["Edit", "Del","idusuario","nombres","apellidos","dni","direccion","telefono","usuario","password","estado"],
+        colNames: ["Editar", "Eliminar", "idusuario", "Nombres", "Apellidos", "DNI", "DirecciÓn", "Teléfono", "Usuario", "Password", "Estado"],
         colModel: [
             {
                 name: 'edit',
                 index: 'edit',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 45,
                 search: false,
                 hidden: false
             },
@@ -86,65 +87,65 @@ function crearGrilla() {
                 index: 'del',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 60,
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idusuario',
                 index: 'idusuario',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'nombres',
                 index: 'nombres',
                 editable: false,
-                width: 150,
+                width: 130,
                 hidden: false
-            },{
+            }, {
                 name: 'apellidos',
                 index: 'apellidos',
                 editable: false,
-                width: 150,
+                width: 170,
                 hidden: false
-            },{
+            }, {
                 name: 'dni',
                 index: 'dni',
                 editable: false,
-                width: 150,
+                width: 110,
                 hidden: false
-            },{
+            }, {
                 name: 'direccion',
                 index: 'direccion',
                 editable: false,
-                width: 150,
+                width: 180,
                 hidden: false
-            },{
+            }, {
                 name: 'telefono',
                 index: 'telefono',
                 editable: false,
-                width: 150,
+                width: 110,
                 hidden: false
-            },{
+            }, {
                 name: 'usuario',
                 index: 'usuario',
                 editable: false,
-                width: 150,
+                width: 160,
                 hidden: false
-            },{
+            }, {
                 name: 'password',
                 index: 'password',
                 editable: false,
-                width: 150,
+                width: 160,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
-            }        ],
+                hidden: true
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -155,7 +156,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/UsuarioController/listarRegistrosUsuarioBE.htm', {poUsuarioBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/UsuarioController/listarRegistrosUsuarioBE.htm', {poUsuarioBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -168,17 +169,17 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Usuario = {
- idusuario: $('#txtIdusuario').val(),
- nombres: $('#txtNombres').val(),
- apellidos: $('#txtApellidos').val(),
- dni: $('#txtDni').val(),
- direccion: $('#txtDireccion').val(),
- telefono: $('#txtTelefono').val(),
- usuario: $('#txtUsuario').val(),
- password: $('#txtPassword').val(),
- estado: true
+                idusuario: $('#txtIdusuario').val(),
+                nombres: $('#txtNombres').val(),
+                apellidos: $('#txtApellidos').val(),
+                dni: $('#txtDni').val(),
+                direccion: $('#txtDireccion').val(),
+                telefono: $('#txtTelefono').val(),
+                usuario: $('#txtUsuario').val(),
+                password: $('#txtPassword').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/UsuarioController/insertarUsuarioBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/UsuarioController/insertarUsuarioBE.htm', {poUsuarioBE: Usuario}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -186,6 +187,10 @@ function save() {
                     $.LimpiarForm('#form');
                     cargarGrilla();
 
+                }
+
+                if (response == -1) {
+                    bootbox.alert(Mensajes.usuarioDuplicado);
                 }
             });
             break;
@@ -214,7 +219,7 @@ function edit(id) {
             $('#txtTelefono').val(rowData.telefono);
             $('#txtUsuario').val(rowData.usuario);
             $('#txtPassword').val(rowData.password);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -228,17 +233,17 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Usuario = {
- idusuario: $('#container').data('idedit'),
- nombres: $('#txtNombres').val(),
- apellidos: $('#txtApellidos').val(),
- dni: $('#txtDni').val(),
- direccion: $('#txtDireccion').val(),
- telefono: $('#txtTelefono').val(),
- usuario: $('#txtUsuario').val(),
- password: $('#txtPassword').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/UsuarioController/actualizarUsuarioBE.htm', {poUsuarioBE: Usuario}, false, function(response) {
+                idusuario: $('#container').data('idedit'),
+                nombres: $('#txtNombres').val(),
+                apellidos: $('#txtApellidos').val(),
+                dni: $('#txtDni').val(),
+                direccion: $('#txtDireccion').val(),
+                telefono: $('#txtTelefono').val(),
+                usuario: $('#txtUsuario').val(),
+                password: $('#txtPassword').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/UsuarioController/actualizarUsuarioBE.htm', {poUsuarioBE: Usuario}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -260,12 +265,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Usuario = {
             IndOpSp: 2,
             idusuario: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/UsuarioController/eliminarUsuarioBE.htm', {poUsuarioBE: Usuario}, false, function(response) {
+        $.ajaxCall(urlApp + '/UsuarioController/eliminarUsuarioBE.htm', {poUsuarioBE: Usuario}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -276,7 +281,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -286,5 +291,6 @@ function del(id) {
     });
 
 
-} function loadCombos() {
+}
+function loadCombos() {
 }

@@ -76,27 +76,27 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
-   <div class="form-group">
+                                    <div class="form-group">
                                         <label>Nombres :</label>
-                                        <input obligatorio id="txtNombres" class="form-control input-sm" type="text" placeholder="Ingrese Nombres">
+                                        <input obligatorio id="txtNombres" class="form-control input-sm" type="text" placeholder="Ingrese Nombres" maxlength="200">
                                     </div>   <div class="form-group">
                                         <label>Apellidos :</label>
-                                        <input obligatorio id="txtApellidos" class="form-control input-sm" type="text" placeholder="Ingrese Apellidos">
+                                        <input obligatorio id="txtApellidos" class="form-control input-sm" type="text" placeholder="Ingrese Apellidos" maxlength="200">
                                     </div>   <div class="form-group">
-                                        <label>Dni :</label>
-                                        <input obligatorio id="txtDni" class="form-control input-sm" type="text" placeholder="Ingrese Dni">
+                                        <label>DNI :</label>
+                                        <input obligatorio solonumeros id="txtDni" class="form-control input-sm" type="text" placeholder="Ingrese Dni" maxlength="12">
                                     </div>   <div class="form-group">
-                                        <label>Direccion :</label>
-                                        <input obligatorio id="txtDireccion" class="form-control input-sm" type="text" placeholder="Ingrese Direccion">
+                                        <label>Dirección :</label>
+                                        <input obligatorio id="txtDireccion" class="form-control input-sm" type="text" placeholder="Ingrese Direccion" maxlength="200">
                                     </div>   <div class="form-group">
-                                        <label>Telefono :</label>
-                                        <input obligatorio id="txtTelefono" class="form-control input-sm" type="text" placeholder="Ingrese Telefono">
+                                        <label>Teléfono :</label>
+                                        <input obligatorio solonumeros id="txtTelefono" class="form-control input-sm" type="text" placeholder="Ingrese Telefono" maxlength="100">
                                     </div>   <div class="form-group">
                                         <label>Usuario :</label>
-                                        <input obligatorio id="txtUsuario" class="form-control input-sm" type="text" placeholder="Ingrese Usuario">
+                                        <input obligatorio id="txtUsuario" class="form-control input-sm" type="text" placeholder="Ingrese Usuario" maxlength="100">
                                     </div>   <div class="form-group">
                                         <label>Password :</label>
-                                        <input obligatorio id="txtPassword" class="form-control input-sm" type="text" placeholder="Ingrese Password">
+                                        <input obligatorio id="txtPassword" class="form-control input-sm" type="text" placeholder="Ingrese Password" maxlength="100">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <button id="btnNuevo" type="button" class="btn btn-primary btn-sm">Guardar</button>
@@ -129,8 +129,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSUsuario.js" type="text/javascript"></script>
-    
+      <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSUsuario.js" type="text/javascript"></script>
+
 </body>
 </html>

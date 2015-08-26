@@ -27,6 +27,7 @@ var Mensajes = {
     anioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El año registrado ya existe.',
     moduloDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El módulo que desea registrar ya existe.',
     rolDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El rol que desea registrar ya existe.',
+    usuarioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El usuario que desea registrar ya existe.',
 };
 
 var Texto = {
