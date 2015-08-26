@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
-   <div class="form-group">
+                                    <div class="form-group">
                                         <label>Denominacion :</label>
                                         <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominacion">
                                     </div>                                </div><!-- /.box-body -->
@@ -111,8 +111,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSCargo.js" type="text/javascript"></script>
-    
+    <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script> -->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSCargo.js" type="text/javascript"></script>
+
 </body>
 </html>
