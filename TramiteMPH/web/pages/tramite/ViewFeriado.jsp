@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
- <div class="form-group">
+                                    <div class="form-group">
                                         <label>Idanio :</label>
                                         <select obligatorio id="txtIdanio" class="form-control input-sm">
                                         </select>
@@ -118,8 +118,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSFeriado.js" type="text/javascript"></script>
-    
+      <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script> -->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSFeriado.js" type="text/javascript"></script>
+
 </body>
 </html>

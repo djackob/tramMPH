@@ -25,6 +25,8 @@ var Mensajes = {
     deseaEliminarDia: '¿Desea eliminar layer Dia?',
     actualizacionMesaCorrecta: '<i class="fa fa-exclamation-triangle fa-2x"></i> La actualizacion del Mesa fue correctamente ejecutado.',
     anioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El año registrado ya existe.',
+    cargoDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El cargo registrado ya existe.',
+    areaDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El area registrado ya existe.',
     moduloDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El módulo que desea registrar ya existe.',
     rolDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El rol que desea registrar ya existe.',
     usuarioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El usuario que desea registrar ya existe.',

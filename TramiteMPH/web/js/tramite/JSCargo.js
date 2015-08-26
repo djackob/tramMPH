@@ -146,6 +146,9 @@ function save() {
                     cargarGrilla();
 
                 }
+                  if(response==-1){
+                   bootbox.alert(Mensajes.cargoDuplicado); 
+                }
             });
             break;
         case -1:

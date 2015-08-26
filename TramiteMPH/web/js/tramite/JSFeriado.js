@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Feriado",
-        colNames: ["Edit", "Del","idferiado","idanio","fecha","motivo","estado"],
+        colNames: ["Edit", "Del", "idferiado", "idanio", "fecha", "motivo", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -90,37 +91,37 @@ function crearGrilla() {
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idferiado',
                 index: 'idferiado',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'idanio',
                 index: 'idanio',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'fecha',
                 index: 'fecha',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'motivo',
                 index: 'motivo',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
                 hidden: false
-            }        ],
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -131,7 +132,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/FeriadoController/listarRegistrosFeriadoBE.htm', {poFeriadoBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/FeriadoController/listarRegistrosFeriadoBE.htm', {poFeriadoBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -144,13 +145,13 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Feriado = {
- idferiado: $('#txtIdferiado').val(),
- idanio: $('#txtIdanio').val(),
- fecha: $('#txtFecha').val(),
- motivo: $('#txtMotivo').val(),
- estado: true
+                idferiado: $('#txtIdferiado').val(),
+                idanio: $('#txtIdanio').val(),
+                fecha: $('#txtFecha').val(),
+                motivo: $('#txtMotivo').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/FeriadoController/insertarFeriadoBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/FeriadoController/insertarFeriadoBE.htm', {poFeriadoBE: Feriado}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -182,7 +183,7 @@ function edit(id) {
             $('#txtIdanio').val(rowData.idanio);
             $('#txtFecha').val(rowData.fecha);
             $('#txtMotivo').val(rowData.motivo);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -196,13 +197,13 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Feriado = {
- idferiado: $('#container').data('idedit'),
- idanio: $('#txtIdanio').val(),
- fecha: $('#txtFecha').val(),
- motivo: $('#txtMotivo').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/FeriadoController/actualizarFeriadoBE.htm', {poFeriadoBE: Feriado}, false, function(response) {
+                idferiado: $('#container').data('idedit'),
+                idanio: $('#txtIdanio').val(),
+                fecha: $('#txtFecha').val(),
+                motivo: $('#txtMotivo').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/FeriadoController/actualizarFeriadoBE.htm', {poFeriadoBE: Feriado}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -224,12 +225,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Feriado = {
             IndOpSp: 2,
             idferiado: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/FeriadoController/eliminarFeriadoBE.htm', {poFeriadoBE: Feriado}, false, function(response) {
+        $.ajaxCall(urlApp + '/FeriadoController/eliminarFeriadoBE.htm', {poFeriadoBE: Feriado}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -240,7 +241,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -250,5 +251,7 @@ function del(id) {
     });
 
 
-} function loadCombos() {
-$.CargarCombo(urlApp + '/FeriadoController/listObjectSectorBE.htm', {poFeriadoBE: {IndOpSp: 1}}, '#txtIdanio');}
+}
+function loadCombos() {
+    $.CargarCombo(urlApp + '/FeriadoController/listObjectFeriadoBE.htm', {poFeriadoBE: {IndOpSp: 2}}, '#txtIdanio');
+}

@@ -198,6 +198,9 @@ function actualizar() {
                     cargarGrilla();
 
                 }
+                 if(response==-1){
+                   bootbox.alert(Mensajes.anioDuplicado); 
+                }
             });
             break;
         case -1:

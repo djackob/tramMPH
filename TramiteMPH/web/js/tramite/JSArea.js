@@ -146,6 +146,9 @@ function save() {
                     cargarGrilla();
 
                 }
+                if(response==-1){
+                   bootbox.alert(Mensajes.areaDuplicado); 
+                }
             });
             break;
         case -1:
@@ -193,6 +196,9 @@ function actualizar() {
                     $.LimpiarForm('#form');
                     cargarGrilla();
 
+                }
+                 if(response==-1){
+                   bootbox.alert(Mensajes.areaDuplicado); 
                 }
             });
             break;
