@@ -71,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Rolmodulo",
-        colNames: ["Editar", "Eliminar", "idRolModulo", "Rol", "Modulo","Pagina Inicio", "Fecha de asignacion", "estado"],
+        colNames: ["Editar", "Eliminar", "idRolModulo", "Rol", "Modulo", "Pagina Inicio", "Fecha de asignacion", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -139,7 +139,6 @@ function crearGrilla() {
 
 function cargarGrilla() {
     $.ajaxCall(urlApp + '/RolmoduloController/listarRegistrosRolmoduloBE.htm', {poRolmoduloBE: {IndOpSp: 1}}, false, function (response) {
-       //alert(JSON.stringify(response));
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -167,7 +166,7 @@ function save() {
                     cargarGrilla();
 
                 }
-                
+
                 //alert(JSON.stringify(response));
 
             });

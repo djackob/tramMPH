@@ -27,9 +27,9 @@ public class RolmoduloBE {
         this.idmodulo = 0;
         this.fechaasignacion = new Date();
         this.estado = false;
-        this.denominacionrol="";
-        this.denominacionmodulo="";
-        this.paginainiciomodulo="";
+        this.denominacionrol = "";
+        this.denominacionmodulo = "";
+        this.paginainiciomodulo = "";
 
     }
 
