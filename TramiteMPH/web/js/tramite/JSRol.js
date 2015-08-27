@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Rol",
-        colNames: ["Editar", "Eliminar","idrol","Denominación","estado"],
+        colNames: ["Editar", "Eliminar", "idrol", "Denominación", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -90,25 +91,25 @@ function crearGrilla() {
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idrol',
                 index: 'idrol',
                 editable: false,
                 width: 150,
                 hidden: true
-            },{
+            }, {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
                 width: 180,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
                 hidden: true
-            }        ],
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -119,7 +120,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/RolController/listarRegistrosRolBE.htm', {poRolBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/RolController/listarRegistrosRolBE.htm', {poRolBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -132,11 +133,11 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Rol = {
- idrol: $('#txtIdrol').val(),
- denominacion: $('#txtDenominacion').val(),
- estado: true
+                idrol: $('#txtIdrol').val(),
+                denominacion: $('#txtDenominacion').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/RolController/insertarRolBE.htm', {poRolBE: Rol}, false, function(response) {
+            $.ajaxCall(urlApp + '/RolController/insertarRolBE.htm', {poRolBE: Rol}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -145,8 +146,8 @@ function save() {
                     cargarGrilla();
 
                 }
-                
-                if (response==-1){
+
+                if (response == -1) {
                     bootbox.alert(Mensajes.rolDuplicado);
                 }
             });
@@ -170,7 +171,7 @@ function edit(id) {
         if (rowData.idrol === id.toString()) {
             $('#txtIdrol').val(rowData.idrol);
             $('#txtDenominacion').val(rowData.denominacion);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -184,11 +185,11 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Rol = {
- idrol: $('#container').data('idedit'),
- denominacion: $('#txtDenominacion').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/RolController/actualizarRolBE.htm', {poRolBE: Rol}, false, function(response) {
+                idrol: $('#container').data('idedit'),
+                denominacion: $('#txtDenominacion').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/RolController/actualizarRolBE.htm', {poRolBE: Rol}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -197,6 +198,7 @@ function actualizar() {
                     cargarGrilla();
 
                 }
+               
             });
             break;
         case -1:
@@ -210,12 +212,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Rol = {
             IndOpSp: 2,
             idrol: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/RolController/eliminarRolBE.htm', {poRolBE: Rol}, false, function(response) {
+        $.ajaxCall(urlApp + '/RolController/eliminarRolBE.htm', {poRolBE: Rol}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -226,7 +228,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -236,5 +238,6 @@ function del(id) {
     });
 
 
-} function loadCombos() {
+}
+function loadCombos() {
 }

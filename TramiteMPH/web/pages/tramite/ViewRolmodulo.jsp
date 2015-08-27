@@ -84,9 +84,9 @@
                                         <label>Idmodulo :</label>
                                         <select obligatorio id="txtIdmodulo" class="form-control input-sm">
                                         </select>
-                                    </div>   <div class="form-group">
-                                        <label>Fechaasignacion :</label>
-                                        <input obligatorio id="txtFechaasignacion" class="form-control input-sm" type="text" placeholder="Ingrese Fechaasignacion">
+                                    <!-- </div>   <div class="form-group">
+                                        <label>Fecha asignación :</label>
+                                        <input obligatorio id="txtFechaasignacion" class="form-control input-sm" type="text" placeholder="Ingrese Fecha asignación">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <button id="btnNuevo" type="button" class="btn btn-primary btn-sm">Guardar</button>
@@ -119,8 +119,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSRolmodulo.js" type="text/javascript"></script>
+      <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script> -->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSRolmodulo.js" type="text/javascript"></script>
     
 </body>
 </html>

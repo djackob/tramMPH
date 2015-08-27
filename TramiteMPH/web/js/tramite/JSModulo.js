@@ -184,6 +184,8 @@ function edit(id) {
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
+
+
     } //for
 }
 
@@ -208,6 +210,7 @@ function actualizar() {
                     cargarGrilla();
 
                 }
+                
             });
             break;
         case -1:

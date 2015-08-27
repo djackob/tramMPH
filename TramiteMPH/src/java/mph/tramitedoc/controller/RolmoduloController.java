@@ -65,7 +65,7 @@ public class RolmoduloController {
     String listarRegistrosRolmoduloBE(@RequestBody Map<String, Object> param) throws UnsupportedEncodingException {
         RolmoduloBL oRolmoduloBL = new RolmoduloBL();
         RolmoduloBE oRolmoduloBE = gson.fromJson(gson.toJson(param.get("poRolmoduloBE")), RolmoduloBE.class);
-
+        
         json = gson.toJson(oRolmoduloBL.listarRegistrosRolmoduloBE(oRolmoduloBE));
         String s2 = new String(json.getBytes("UTF-8"), "ISO-8859-1");
         return s2;
