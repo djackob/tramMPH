@@ -85,27 +85,48 @@ public class RolmoduloDA extends BaseDA {
             cn.setAutoCommit(false);
             String sql = "";
             if (oRolmoduloBE1.getIndOpSp() == 1) {
-                sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrolmodulo||')\" class=\"fa fa-pencil-square-o\"></i>','<i style=\"cursor:pointer;\" onclick=\"del('||idrolmodulo||')\" class=\"fa fa-trash-o\"></i>',idrolmodulo,idrol,idmodulo,fechaasignacion,estado FROM rolmodulo WHERE estado=true";
+                sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrolmodulo||')\" class=\"fa fa-pencil-square-o\"></i>','<i style=\"cursor:pointer;\" onclick=\"del('||idrolmodulo||')\" class=\"fa fa-trash-o\"></i>',"
+                        + "rm.idrolmodulo,r.denominacion as rol,m.denominacion as modulo,m.paginainicio,\n"
+                        + "       rm.fechaasignacion, rm.estado\n"
+                        + "       from rol r \n"
+                        + "       inner join  rolmodulo rm\n"
+                        + "	on r.idrol=rm.idrol inner join modulo m\n"
+                        + "	on m.idmodulo=rm.idmodulo\n"
+                        + "	order by r.idrol";
+                System.out.println("sq:"+sql);
                 pst = cn.prepareStatement(sql);
                 rs = pst.executeQuery();
+
+                while (rs.next()) {
+                    RolmoduloBE oRolmoduloBE = new RolmoduloBE();
+                    oRolmoduloBE.setEdit(rs.getString(1));
+                    oRolmoduloBE.setDel(rs.getString(2));
+                    oRolmoduloBE.setIdrolmodulo(rs.getInt("idrolmodulo"));
+                    oRolmoduloBE.setDenominacionrol(rs.getString("rol"));
+                    oRolmoduloBE.setDenominacionmodulo(rs.getString("modulo"));
+                    oRolmoduloBE.setPaginainiciomodulo(rs.getString("paginainicio"));
+                    oRolmoduloBE.setFechaasignacion(rs.getDate("fechaasignacion"));
+                    oRolmoduloBE.setEstado(rs.getBoolean("estado"));
+                    listaRolmoduloBE.add(oRolmoduloBE);
+                }
             }
             if (oRolmoduloBE1.getIndOpSp() == 2) {
                 sql = " SELECT idrolmodulo,idrol,idmodulo,fechaasignacion,estado FROM rolmodulo WHERE idrolmodulo=? and estado=true";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, oRolmoduloBE1.getIdrolmodulo());
                 rs = pst.executeQuery();
-            }
 
-            while (rs.next()) {
-                RolmoduloBE oRolmoduloBE = new RolmoduloBE();
-                oRolmoduloBE.setEdit(rs.getString(1));
-                oRolmoduloBE.setDel(rs.getString(2));
-                oRolmoduloBE.setIdrolmodulo(rs.getInt("idrolmodulo"));
-                oRolmoduloBE.setIdrol(rs.getInt("idrol"));
-                oRolmoduloBE.setIdmodulo(rs.getInt("idmodulo"));
-                oRolmoduloBE.setFechaasignacion(rs.getDate("fechaasignacion"));
-                oRolmoduloBE.setEstado(rs.getBoolean("estado"));
-                listaRolmoduloBE.add(oRolmoduloBE);
+                while (rs.next()) {
+                    RolmoduloBE oRolmoduloBE = new RolmoduloBE();
+                    oRolmoduloBE.setEdit(rs.getString(1));
+                    oRolmoduloBE.setDel(rs.getString(2));
+                    oRolmoduloBE.setIdrolmodulo(rs.getInt("idrolmodulo"));
+                    oRolmoduloBE.setIdrol(rs.getInt("idrol"));
+                    oRolmoduloBE.setIdmodulo(rs.getInt("idmodulo"));
+                    oRolmoduloBE.setFechaasignacion(rs.getDate("fechaasignacion"));
+                    oRolmoduloBE.setEstado(rs.getBoolean("estado"));
+                    listaRolmoduloBE.add(oRolmoduloBE);
+                }
             }
 
             cn.commit();
@@ -311,7 +332,7 @@ public class RolmoduloDA extends BaseDA {
                 }
 
             }
-                if (oRolmoduloBE.getIndOpSp() == 2) {
+            if (oRolmoduloBE.getIndOpSp() == 2) {
                 sql = " SELECT idrol,denominacion FROM rol WHERE estado=true";
                 pst = cn.prepareStatement(sql);
                 //pst.setString(1, oInformacionBE.getCodigocliente());
@@ -324,7 +345,7 @@ public class RolmoduloDA extends BaseDA {
                 }
 
             }
-                    if (oRolmoduloBE.getIndOpSp() == 3) {
+            if (oRolmoduloBE.getIndOpSp() == 3) {
                 sql = " SELECT idmodulo,denominacion FROM modulo WHERE estado=true";
                 pst = cn.prepareStatement(sql);
                 //pst.setString(1, oInformacionBE.getCodigocliente());

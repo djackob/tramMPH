@@ -71,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Rolmodulo",
-        colNames: ["Editar", "Eliminar", "idrolmodulo", "idrol", "idmodulo", "fechaasignacion", "estado"],
+        colNames: ["Editar", "Eliminar", "idRolModulo", "Rol", "Modulo","Pagina Inicio", "Fecha de asignacion", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -98,14 +98,20 @@ function crearGrilla() {
                 width: 150,
                 hidden: false
             }, {
-                name: 'idrol',
-                index: 'idrol',
+                name: 'denominacionrol',
+                index: 'denominacionrol',
                 editable: false,
                 width: 150,
                 hidden: false
             }, {
-                name: 'idmodulo',
-                index: 'idmodulo',
+                name: 'denominacionmodulo',
+                index: 'denominacionmodulo',
+                editable: false,
+                width: 150,
+                hidden: false
+            }, {
+                name: 'paginainiciomodulo',
+                index: 'paginainiciomodulo',
                 editable: false,
                 width: 150,
                 hidden: false
@@ -120,7 +126,7 @@ function crearGrilla() {
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: true
+                hidden: false
             }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
@@ -133,6 +139,7 @@ function crearGrilla() {
 
 function cargarGrilla() {
     $.ajaxCall(urlApp + '/RolmoduloController/listarRegistrosRolmoduloBE.htm', {poRolmoduloBE: {IndOpSp: 1}}, false, function (response) {
+       //alert(JSON.stringify(response));
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
