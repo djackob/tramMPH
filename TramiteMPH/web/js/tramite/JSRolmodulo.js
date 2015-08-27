@@ -96,7 +96,7 @@ function crearGrilla() {
                 index: 'idrolmodulo',
                 editable: false,
                 width: 150,
-                hidden: false
+                hidden: true
             }, {
                 name: 'denominacionrol',
                 index: 'denominacionrol',
@@ -126,7 +126,7 @@ function crearGrilla() {
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
+                hidden: true
             }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
