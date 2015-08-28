@@ -115,8 +115,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSRequisitos.js" type="text/javascript"></script>
+<!--      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSRequisitos.js" type="text/javascript"></script>
     
 </body>
 </html>
