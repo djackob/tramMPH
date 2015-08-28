@@ -41,12 +41,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Registro de Usuariorol
-                    <small>Administracion de usuarios</small>
+                    Registro de Usuario Rol
+                    <small>Administracion de Usuarios</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Usuariorol</a></li>
-                    <li class="active">Registro de Usuariorol</li>
+                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Usuario Rol</a></li>
+                    <li class="active">Registro de Usuario Rol</li>
                 </ol>
             </section>
 
@@ -72,19 +72,19 @@
                         <form id="form" role="form">
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Registro de Usuariorol</h3>
+                                    <h3 class="box-title">Registro de Usuario Rol</h3>
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
  <div class="form-group">
-                                        <label>Idusuario :</label>
+                                        <label>Usuario :</label>
                                         <select obligatorio id="txtIdusuario" class="form-control input-sm">
                                         </select>
                                     </div> <div class="form-group">
-                                        <label>Idrol :</label>
+                                        <label>Rol :</label>
                                         <select obligatorio id="txtIdrol" class="form-control input-sm">
                                         </select>
-                                    </div>   <div class="form-group">
+                                    <!--</div>   <div class="form-group">
                                         <label>Fechaasignacion :</label>
                                         <input obligatorio id="txtFechaasignacion" class="form-control input-sm" type="text" placeholder="Ingrese Fechaasignacion">
                                     </div>                                </div><!-- /.box-body -->
@@ -119,8 +119,8 @@
     <script src="${pageContext.request.contextPath}/js/helper/JSMensajes.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
-      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/SISTEMA/JSUsuariorol.js" type="text/javascript"></script>
+      <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
+    <script src="${pageContext.request.contextPath}/js/tramite/JSUsuariorol.js" type="text/javascript"></script>
     
 </body>
 </html>

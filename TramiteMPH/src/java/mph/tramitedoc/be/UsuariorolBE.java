@@ -15,6 +15,12 @@ private int IndOpSp;   private String edit;
  private int idrol;
  private Date fechaasignacion;
  private boolean estado;
+ 
+   //VARIABLES AGREGADOS
+    private String denominacionrol;
+    private String nombres;
+    private String apellidos;
+    private String telefono;
 
 public UsuariorolBE(){
 this.IndOpSp = 0;
@@ -23,6 +29,10 @@ this.idusuario = 0;
 this.idrol = 0;
 this.fechaasignacion = new Date();
 this.estado = false;
+this.denominacionrol="";
+this.nombres="";
+this.apellidos="";
+this.telefono="";
 
 }
 public UsuariorolBE(int pIndOpSp,int pidusuariorol,int pidusuario,int pidrol,Date pfechaasignacion,boolean pestado)
@@ -102,4 +112,61 @@ this.estado = estado;
 
     public void setDel(String del) {
         this.del = del;
-    }}
+    }
+
+    /**
+     * @return the denominacionrol
+     */
+    public String getDenominacionrol() {
+        return denominacionrol;
+    }
+
+    /**
+     * @param denominacionrol the denominacionrol to set
+     */
+    public void setDenominacionrol(String denominacionrol) {
+        this.denominacionrol = denominacionrol;
+    }
+
+    /**
+     * @return the nombres
+     */
+    public String getNombres() {
+        return nombres;
+    }
+
+    /**
+     * @param nombres the nombres to set
+     */
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    /**
+     * @return the apellidos
+     */
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    /**
+     * @param apellidos the apellidos to set
+     */
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    /**
+     * @return the telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+}
