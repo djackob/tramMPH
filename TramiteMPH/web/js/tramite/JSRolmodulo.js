@@ -48,6 +48,10 @@ $(function () {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
+        cargarGrilla();
+    });
+    $("#txtIdrol").change(function (e) {
+        cargarGrilla($(this).val());
     });
 
 
@@ -137,11 +141,12 @@ function crearGrilla() {
     jQuery("#grid").jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false});
 }
 
-function cargarGrilla() {
-    $.ajaxCall(urlApp + '/RolmoduloController/listarRegistrosRolmoduloBE.htm', {poRolmoduloBE: {IndOpSp: 1}}, false, function (response) {
+function cargarGrilla(idRol) {
+    $.ajaxCall(urlApp + '/RolmoduloController/listarRegistrosRolmoduloBE.htm', {poRolmoduloBE: {IndOpSp: 1, idrol: idRol}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
+
 }
 
 
@@ -166,8 +171,6 @@ function save() {
                     cargarGrilla();
 
                 }
-
-                alert(JSON.stringify(response));
 
             });
             break;
