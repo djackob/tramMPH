@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,24 +44,31 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
+        cargarGrilla();
     });
+
+    $("#txtIdusuario").change(function () {
+        cargarGrilla($(this).val());
+    });
+
 
 
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,14 +77,14 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Usuariorol",
-        colNames: ["Edit", "Del","idusuariorol","idusuario","idrol","fechaasignacion","estado"],
+        colNames: ["Editar", "Eliminar", "idusuariorol", "Rol", "Nombres", "Apellidos", "Telefono", "Fecha de asignacion", "estado"],
         colModel: [
             {
                 name: 'edit',
                 index: 'edit',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 45,
                 search: false,
                 hidden: false
             },
@@ -86,41 +93,53 @@ function crearGrilla() {
                 index: 'del',
                 editable: false,
                 align: "center",
-                width: 40,
+                width: 60,
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idusuariorol',
                 index: 'idusuariorol',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
-                name: 'idusuario',
-                index: 'idusuario',
+                hidden: true
+            }, {
+                name: 'denominacionrol',
+                index: 'denominacionrol',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
-                name: 'idrol',
-                index: 'idrol',
+            }, {
+                name: 'nombres',
+                index: 'nombres',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
+                name: 'apellidos',
+                index: 'apellidos',
+                editable: false,
+                width: 150,
+                hidden: false
+            }, {
+                name: 'telefono',
+                index: 'telefono',
+                editable: false,
+                width: 150,
+                hidden: false
+            }, {
                 name: 'fechaasignacion',
                 index: 'fechaasignacion',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
-            }        ],
+                hidden: true
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -130,8 +149,8 @@ function crearGrilla() {
     jQuery("#grid").jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false});
 }
 
-function cargarGrilla() {
-    $.ajaxCall(urlApp +'/UsuariorolController/listarRegistrosUsuariorolBE.htm', {poUsuariorolBE: {IndOpSp: 1}}, false, function(response) {
+function cargarGrilla(idUsuario) {
+    $.ajaxCall(urlApp + '/UsuariorolController/listarRegistrosUsuariorolBE.htm', {poUsuariorolBE: {IndOpSp: 1, idusuario: idUsuario}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -144,13 +163,13 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Usuariorol = {
- idusuariorol: $('#txtIdusuariorol').val(),
- idusuario: $('#txtIdusuario').val(),
- idrol: $('#txtIdrol').val(),
- fechaasignacion: $('#txtFechaasignacion').val(),
- estado: true
+                idusuariorol: $('#txtIdusuariorol').val(),
+                idusuario: $('#txtIdusuario').val(),
+                idrol: $('#txtIdrol').val(),
+                fechaasignacion: $('#txtFechaasignacion').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/UsuariorolController/insertarUsuariorolBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/UsuariorolController/insertarUsuariorolBE.htm', {poUsuariorolBE: Usuariorol}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -182,7 +201,7 @@ function edit(id) {
             $('#txtIdusuario').val(rowData.idusuario);
             $('#txtIdrol').val(rowData.idrol);
             $('#txtFechaasignacion').val(rowData.fechaasignacion);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -196,13 +215,13 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Usuariorol = {
- idusuariorol: $('#container').data('idedit'),
- idusuario: $('#txtIdusuario').val(),
- idrol: $('#txtIdrol').val(),
- fechaasignacion: $('#txtFechaasignacion').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/UsuariorolController/actualizarUsuariorolBE.htm', {poUsuariorolBE: Usuariorol}, false, function(response) {
+                idusuariorol: $('#container').data('idedit'),
+                idusuario: $('#txtIdusuario').val(),
+                idrol: $('#txtIdrol').val(),
+                fechaasignacion: $('#txtFechaasignacion').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/UsuariorolController/actualizarUsuariorolBE.htm', {poUsuariorolBE: Usuariorol}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -224,12 +243,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Usuariorol = {
             IndOpSp: 2,
             idusuariorol: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/UsuariorolController/eliminarUsuariorolBE.htm', {poUsuariorolBE: Usuariorol}, false, function(response) {
+        $.ajaxCall(urlApp + '/UsuariorolController/eliminarUsuariorolBE.htm', {poUsuariorolBE: Usuariorol}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -240,7 +259,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -250,5 +269,8 @@ function del(id) {
     });
 
 
-} function loadCombos() {
-$.CargarCombo(urlApp + '/UsuariorolController/listObjectSectorBE.htm', {poUsuariorolBE: {IndOpSp: 1}}, '#txtIdusuario');$.CargarCombo(urlApp + '/UsuariorolController/listObjectSectorBE.htm', {poUsuariorolBE: {IndOpSp: 1}}, '#txtIdrol');}
+}
+function loadCombos() {
+    $.CargarCombo(urlApp + '/UsuariorolController/listObjectUsuariorolBE.htm', {poUsuariorolBE: {IndOpSp: 2}}, '#txtIdusuario');
+    $.CargarCombo(urlApp + '/UsuariorolController/listObjectUsuariorolBE.htm', {poUsuariorolBE: {IndOpSp: 3}}, '#txtIdrol');
+}
