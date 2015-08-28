@@ -42,7 +42,7 @@
             <section class="content-header">
                 <h1>
                     Registro de Requisitos
-                    <small>Administracion de usuarios</small>
+                    <small>Administracion de Requisitos</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-unlock-alt"></i> Requisitos</a></li>
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de Requisitos</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
- <div class="form-group">
+                                    <div class="form-group">
                                         <label>Idprocedimiento :</label>
                                         <select obligatorio id="txtIdprocedimiento" class="form-control input-sm">
                                         </select>
@@ -117,6 +117,6 @@
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
 <!--      <script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
     <script src="${pageContext.request.contextPath}/js/tramite/JSRequisitos.js" type="text/javascript"></script>
-    
+
 </body>
 </html>
