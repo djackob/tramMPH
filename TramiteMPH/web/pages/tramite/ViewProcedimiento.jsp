@@ -76,8 +76,8 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
- <div class="form-group">
-                                        <label>Idarea :</label>
+                                    <div class="form-group">
+                                        <label>Área :</label>
                                         <select obligatorio id="txtIdarea" class="form-control input-sm">
                                         </select>
                                     </div>   <div class="form-group">
@@ -87,14 +87,14 @@
                                         <label>Denominacion :</label>
                                         <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominacion">
                                     </div>   <div class="form-group">
-                                        <label>Plazodias :</label>
+                                        <label>Plazo(días) :</label>
                                         <input obligatorio id="txtPlazodias" class="form-control input-sm" type="text" placeholder="Ingrese Plazodias">
                                     </div> <div class="form-group">
-                                        <label>Idcargoresolutor :</label>
+                                        <label>Cargo :</label>
                                         <select obligatorio id="txtIdcargoresolutor" class="form-control input-sm">
                                         </select>
                                     </div>   <div class="form-group">
-                                        <label>Descripcion :</label>
+                                        <label>Descripción :</label>
                                         <input obligatorio id="txtDescripcion" class="form-control input-sm" type="text" placeholder="Ingrese Descripcion">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">
@@ -130,6 +130,6 @@
     <script src="${pageContext.request.contextPath}/js/AdminLTE/demo.js" type="text/javascript"></script>
       <!--<script src="${pageContext.request.contextPath}/js/helper/JSSession.js" type="text/javascript"></script>-->
     <script src="${pageContext.request.contextPath}/js/tramite/JSProcedimiento.js" type="text/javascript"></script>
-    
+
 </body>
 </html>

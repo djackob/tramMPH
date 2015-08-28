@@ -8,25 +8,25 @@
  * Global variables. If you change any of these vars, don't forget 
  * to change the values in the less files!
  */
- /*
-    /* INITIALIZE 
-     * ------------------------
-     */
-$(function() {
+/*
+ /* INITIALIZE 
+ * ------------------------
+ */
+$(function () {
     initForm();
     crearGrilla();
     cargarGrilla();
-        $('#containerGrilla').bind('resize', function () {
-            $("#grid").setGridWidth($('#containerGrilla').width());
-        }).trigger('resize');
+    $('#containerGrilla').bind('resize', function () {
+        $("#grid").setGridWidth($('#containerGrilla').width());
+    }).trigger('resize');
 });
 
-     /*EVENTS
-     * ------------------------
-     */
-$(function() {
+/*EVENTS
+ * ------------------------
+ */
+$(function () {
 
-    $("#btnNuevo").click(function(e) {
+    $("#btnNuevo").click(function (e) {
 
         if ($("#btnNuevo").text() === 'Nuevo') {
             $.HabilitarForm('#form');
@@ -44,7 +44,7 @@ $(function() {
         e.stopPropagation();
     });
 
-    $("#btnCancelar").click(function(e) {
+    $("#btnCancelar").click(function (e) {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
@@ -54,14 +54,15 @@ $(function() {
 });
 
 
-     /* FUNCTIONS
-     * ------------------------
-     */
+/* FUNCTIONS
+ * ------------------------
+ */
 function initForm() {
     $.DesabilitarForm('#form');
     $.LimpiarForm('#form');
     $("#btnNuevo").text('Nuevo');
-    loadCombos();}
+    loadCombos();
+}
 
 function crearGrilla() {
     $("#grid").jqGrid({
@@ -70,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Procedimiento",
-        colNames: ["Edit", "Del","idprocedimiento","idarea","codigo","denominacion","plazodias","idcargoresolutor","descripcion","estado"],
+        colNames: ["Edit", "Del", "idprocedimiento", "idarea", "codigo", "denominacion", "plazodias", "idcargoresolutor", "descripcion", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -90,55 +91,55 @@ function crearGrilla() {
                 search: false,
                 hidden: false
             },
-{
+            {
                 name: 'idprocedimiento',
                 index: 'idprocedimiento',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'idarea',
                 index: 'idarea',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'codigo',
                 index: 'codigo',
                 editable: false,
-                width: 150,
+                width: 120,
                 hidden: false
-            },{
+            }, {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'plazodias',
                 index: 'plazodias',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'idcargoresolutor',
                 index: 'idcargoresolutor',
                 editable: false,
                 width: 150,
-                hidden: false
-            },{
+                hidden: true
+            }, {
                 name: 'descripcion',
                 index: 'descripcion',
                 editable: false,
                 width: 150,
                 hidden: false
-            },{
+            }, {
                 name: 'estado',
                 index: 'estado',
                 editable: false,
                 width: 150,
                 hidden: false
-            }        ],
+            }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
         viewrecords: true,
@@ -149,7 +150,7 @@ function crearGrilla() {
 }
 
 function cargarGrilla() {
-    $.ajaxCall(urlApp +'/ProcedimientoController/listarRegistrosProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, false, function(response) {
+    $.ajaxCall(urlApp + '/ProcedimientoController/listarRegistrosProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
@@ -162,16 +163,16 @@ function save() {
     switch (resulValidacion) {
         case 0:
             var Procedimiento = {
- idprocedimiento: $('#txtIdprocedimiento').val(),
- idarea: $('#txtIdarea').val(),
- codigo: $('#txtCodigo').val(),
- denominacion: $('#txtDenominacion').val(),
- plazodias: $('#txtPlazodias').val(),
- idcargoresolutor: $('#txtIdcargoresolutor').val(),
- descripcion: $('#txtDescripcion').val(),
- estado: true
+                idprocedimiento: $('#txtIdprocedimiento').val(),
+                idarea: $('#txtIdarea').val(),
+                codigo: $('#txtCodigo').val(),
+                denominacion: $('#txtDenominacion').val(),
+                plazodias: $('#txtPlazodias').val(),
+                idcargoresolutor: $('#txtIdcargoresolutor').val(),
+                descripcion: $('#txtDescripcion').val(),
+                estado: true
             };
-            $.ajaxCall(urlApp +'/ProcedimientoController/insertarProcedimientoBE.htm', {poActividadBE: Actividad}, false, function(response) {
+            $.ajaxCall(urlApp + '/ProcedimientoController/insertarProcedimientoBE.htm', {poProcedimientoBE: Procedimiento}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -206,7 +207,7 @@ function edit(id) {
             $('#txtPlazodias').val(rowData.plazodias);
             $('#txtIdcargoresolutor').val(rowData.idcargoresolutor);
             $('#txtDescripcion').val(rowData.descripcion);
-             $('#txtEstado').val(rowData.estado);
+            $('#txtEstado').val(rowData.estado);
             $("#btnNuevo").text('Actualizar');
             $.HabilitarForm('#form');
         } //if
@@ -220,16 +221,16 @@ function actualizar() {
     switch (resulValidacion) {
         case 0:
             var Procedimiento = {
- idprocedimiento: $('#container').data('idedit'),
- idarea: $('#txtIdarea').val(),
- codigo: $('#txtCodigo').val(),
- denominacion: $('#txtDenominacion').val(),
- plazodias: $('#txtPlazodias').val(),
- idcargoresolutor: $('#txtIdcargoresolutor').val(),
- descripcion: $('#txtDescripcion').val(),
- estado: true
-};
-            $.ajaxCall(urlApp +'/ProcedimientoController/actualizarProcedimientoBE.htm', {poProcedimientoBE: Procedimiento}, false, function(response) {
+                idprocedimiento: $('#container').data('idedit'),
+                idarea: $('#txtIdarea').val(),
+                codigo: $('#txtCodigo').val(),
+                denominacion: $('#txtDenominacion').val(),
+                plazodias: $('#txtPlazodias').val(),
+                idcargoresolutor: $('#txtIdcargoresolutor').val(),
+                descripcion: $('#txtDescripcion').val(),
+                estado: true
+            };
+            $.ajaxCall(urlApp + '/ProcedimientoController/actualizarProcedimientoBE.htm', {poProcedimientoBE: Procedimiento}, false, function (response) {
                 if (response > 0) {
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
@@ -251,12 +252,12 @@ function actualizar() {
 }
 
 function del(id) {
-    var eliminar = function() {
+    var eliminar = function () {
         var Procedimiento = {
             IndOpSp: 2,
             idprocedimiento: id //1=consulta por ids
         };
-        $.ajaxCall(urlApp +'/ProcedimientoController/eliminarProcedimientoBE.htm', {poProcedimientoBE: Procedimiento}, false, function(response) {
+        $.ajaxCall(urlApp + '/ProcedimientoController/eliminarProcedimientoBE.htm', {poProcedimientoBE: Procedimiento}, false, function (response) {
             if (response > 0) {
                 bootbox.alert(Mensajes.operacionCorrecta);
                 $("#btnNuevo").text('Nuevo');
@@ -267,7 +268,7 @@ function del(id) {
         });
     };
 
-    bootbox.confirm(Mensajes.deseaEliminar, function(result) {
+    bootbox.confirm(Mensajes.deseaEliminar, function (result) {
         if (result == true) {
             eliminar();
         }
@@ -277,5 +278,8 @@ function del(id) {
     });
 
 
-} function loadCombos() {
-$.CargarCombo(urlApp + '/ProcedimientoController/listObjectSectorBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdarea');$.CargarCombo(urlApp + '/ProcedimientoController/listObjectSectorBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdcargoresolutor');}
+}
+function loadCombos() {
+    $.CargarCombo(urlApp + '/ProcedimientoController/listObjectProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdarea');
+    $.CargarCombo(urlApp + '/ProcedimientoController/listObjectProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdcargoresolutor');
+}
