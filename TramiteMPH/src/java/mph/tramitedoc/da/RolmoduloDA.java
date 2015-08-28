@@ -92,7 +92,7 @@ public class RolmoduloDA extends BaseDA {
                         + "       inner join  rolmodulo rm\n"
                         + "	on r.idrol=rm.idrol inner join modulo m\n"
                         + "	on m.idmodulo=rm.idmodulo\n"
-                        + "	order by r.idrol";
+                        + "	where rm.estado=true and r.idrol="+oRolmoduloBE1.getIdrol()+" order by r.idrol asc";
 
                 pst = cn.prepareStatement(sql);
                 rs = pst.executeQuery();
