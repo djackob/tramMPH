@@ -167,7 +167,7 @@ function save() {
 
                 }
 
-                //alert(JSON.stringify(response));
+                alert(JSON.stringify(response));
 
             });
             break;
