@@ -77,7 +77,7 @@
                                 <div class="box-body">
                                     <!-- Date range -->
                                     <div class="form-group">
-                                        <label>Idprocedimiento :</label>
+                                        <label>Procedimiento :</label>
                                         <select obligatorio id="txtIdprocedimiento" class="form-control input-sm">
                                         </select>
                                     </div>   <div class="form-group">

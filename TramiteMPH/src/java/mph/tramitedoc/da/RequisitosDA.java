@@ -84,26 +84,43 @@ public class RequisitosDA extends BaseDA {
             cn.setAutoCommit(false);
             String sql = "";
             if (oRequisitosBE1.getIndOpSp() == 1) {
-                sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrequisitos||')\" class=\"fa fa-pencil-square-o\"></i>','<i style=\"cursor:pointer;\" onclick=\"del('||idrequisitos||')\" class=\"fa fa-trash-o\"></i>',idrequisitos,idprocedimiento,denominacion,estado FROM requisitos WHERE estado=true";
+                sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrequisitos||')\" class=\"fa fa-pencil-square-o\"></i>',"
+                        + "'<i style=\"cursor:pointer;\" onclick=\"del('||idrequisitos||')\" class=\"fa fa-trash-o\"></i>',r.idrequisitos,"
+                        + "r.idprocedimiento,p.denominacion as procdenominacion,r.denominacion,r.estado FROM requisitos r inner join "
+                        + "procedimiento p on r.idprocedimiento=p.idprocedimiento where r.estado=true and r.idprocedimiento=" + oRequisitosBE1.getIdprocedimiento()
+                        + "order by r.idrequisitos asc";
                 pst = cn.prepareStatement(sql);
                 rs = pst.executeQuery();
+
+                while (rs.next()) {
+                    RequisitosBE oRequisitosBE = new RequisitosBE();
+                    oRequisitosBE.setEdit(rs.getString(1));
+                    oRequisitosBE.setDel(rs.getString(2));
+                    oRequisitosBE.setIdrequisitos(rs.getInt("idrequisitos"));
+                    oRequisitosBE.setIdprocedimiento(rs.getInt("idprocedimiento"));
+                    oRequisitosBE.setProcdenominacion(rs.getString("procdenominacion"));
+                    oRequisitosBE.setDenominacion(rs.getString("denominacion"));
+                    oRequisitosBE.setEstado(rs.getBoolean("estado"));
+                    listaRequisitosBE.add(oRequisitosBE);
+                }
             }
+
             if (oRequisitosBE1.getIndOpSp() == 2) {
                 sql = " SELECT idrequisitos,idprocedimiento,denominacion,estado FROM requisitos WHERE idrequisitos=? and estado=true";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, oRequisitosBE1.getIdrequisitos());
                 rs = pst.executeQuery();
-            }
 
-            while (rs.next()) {
-                RequisitosBE oRequisitosBE = new RequisitosBE();
-                oRequisitosBE.setEdit(rs.getString(1));
-                oRequisitosBE.setDel(rs.getString(2));
-                oRequisitosBE.setIdrequisitos(rs.getInt("idrequisitos"));
-                oRequisitosBE.setIdprocedimiento(rs.getInt("idprocedimiento"));
-                oRequisitosBE.setDenominacion(rs.getString("denominacion"));
-                oRequisitosBE.setEstado(rs.getBoolean("estado"));
-                listaRequisitosBE.add(oRequisitosBE);
+                while (rs.next()) {
+                    RequisitosBE oRequisitosBE = new RequisitosBE();
+                    oRequisitosBE.setEdit(rs.getString(1));
+                    oRequisitosBE.setDel(rs.getString(2));
+                    oRequisitosBE.setIdrequisitos(rs.getInt("idrequisitos"));
+                    oRequisitosBE.setIdprocedimiento(rs.getInt("idprocedimiento"));
+                    oRequisitosBE.setDenominacion(rs.getString("denominacion"));
+                    oRequisitosBE.setEstado(rs.getBoolean("estado"));
+                    listaRequisitosBE.add(oRequisitosBE);
+                }
             }
 
             cn.commit();

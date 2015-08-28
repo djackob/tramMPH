@@ -48,9 +48,12 @@ $(function () {
         $.DesabilitarForm('#form');
         $.LimpiarForm('#form');
         $("#btnNuevo").text('Nuevo');
+        cargarGrilla();
     });
-
-
+    
+    $("#txtIdprocedimiento").change(function (e) {
+        cargarGrilla($(this).val());
+    });
 });
 
 
@@ -71,7 +74,8 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Requisitos",
-        colNames: ["Edit", "Del", "idrequisitos", "idprocedimiento", "denominacion", "estado"],
+//        colNames: ["Edit", "Del", "idrequisitos", "idprocedimiento", "procdenominacion", "estado"],
+        colNames: ["Edit", "Del", "idrequisitos", "idprocedimiento", "Procedimiento", "Requisitos", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -104,10 +108,16 @@ function crearGrilla() {
                 width: 150,
                 hidden: true
             }, {
+                name: 'procdenominacion',
+                index: 'procdenominacion',
+                editable: false,
+                width: 250,
+                hidden: false    
+            }, {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
-                width: 400,
+                width: 250,
                 hidden: false
             }, {
                 name: 'estado',
@@ -125,8 +135,10 @@ function crearGrilla() {
     jQuery("#grid").jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false});
 }
 
-function cargarGrilla() {
-    $.ajaxCall(urlApp + '/RequisitosController/listarRegistrosRequisitosBE.htm', {poRequisitosBE: {IndOpSp: 1}}, false, function (response) {
+//function cargarGrilla() {
+function cargarGrilla(idprocedimiento) {
+//    $.ajaxCall(urlApp + '/RequisitosController/listarRegistrosRequisitosBE.htm', {poRequisitosBE: {IndOpSp: 1}}, false, function (response) {
+    $.ajaxCall(urlApp + '/RequisitosController/listarRegistrosRequisitosBE.htm', {poRequisitosBE: {IndOpSp: 1, idprocedimiento: idprocedimiento}}, false, function (response) {
         $('#grid').jqGrid('clearGridData');
         jQuery("#grid").jqGrid('setGridParam', {data: response}).trigger('reloadGrid');
     });
