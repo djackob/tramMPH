@@ -42,7 +42,7 @@
             <section class="content-header">
                 <h1>
                     Registro de Rol
-                    <small>Administracion de usuarios</small>
+                    <small>Administración de Rol</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-unlock-alt"></i> Rol</a></li>
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de Roles</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
@@ -77,7 +77,7 @@
                                 <div class="box-body">
                                     <!-- Date range -->
    <div class="form-group">
-                                        <label>Denominacion :</label>
+                                        <label>Denominación :</label>
                                         <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominación" maxlength="100">
                                     </div>                                </div><!-- /.box-body -->
                                 <div class="box-footer">

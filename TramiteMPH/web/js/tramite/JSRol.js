@@ -101,7 +101,7 @@ function crearGrilla() {
                 name: 'denominacion',
                 index: 'denominacion',
                 editable: false,
-                width: 180,
+                width: 200,
                 hidden: false
             }, {
                 name: 'estado',

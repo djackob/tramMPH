@@ -42,11 +42,11 @@
             <section class="content-header">
                 <h1>
                     Registro de Modulo
-                    <small>Administracion de usuarios</small>
+                    <small>Administracion de Módulo</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Modulo</a></li>
-                    <li class="active">Registro de Modulo</li>
+                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Módulo</a></li>
+                    <li class="active">Registro de Módulo</li>
                 </ol>
             </section>
 
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de Módulos</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
@@ -72,7 +72,7 @@
                         <form id="form" role="form">
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Registro de Modulo</h3>
+                                    <h3 class="box-title">Registro de Módulo</h3>
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
