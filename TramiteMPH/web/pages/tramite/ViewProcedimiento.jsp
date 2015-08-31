@@ -42,7 +42,7 @@
             <section class="content-header">
                 <h1>
                     Registro de Procedimiento
-                    <small>Administracion de usuarios</small>
+                    <small>Administración de Procedimientos</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-unlock-alt"></i> Procedimiento</a></li>
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de Procedimientos</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
@@ -82,13 +82,13 @@
                                         </select>
                                     </div>   <div class="form-group">
                                         <label>Codigo :</label>
-                                        <input obligatorio id="txtCodigo" class="form-control input-sm" type="text" placeholder="Ingrese Codigo">
+                                        <input maxlength="12" SoloNumeros obligatorio id="txtCodigo" class="form-control input-sm" type="text" placeholder="Ingrese Codigo">
                                     </div>   <div class="form-group">
                                         <label>Denominacion :</label>
                                         <input obligatorio id="txtDenominacion" class="form-control input-sm" type="text" placeholder="Ingrese Denominacion">
                                     </div>   <div class="form-group">
                                         <label>Plazo(días) :</label>
-                                        <input obligatorio id="txtPlazodias" class="form-control input-sm" type="text" placeholder="Ingrese Plazodias">
+                                        <input maxlength="3" SoloNumeros obligatorio id="txtPlazodias" class="form-control input-sm" type="text" placeholder="Ingrese Plazodias">
                                     </div> <div class="form-group">
                                         <label>Cargo :</label>
                                         <select obligatorio id="txtIdcargoresolutor" class="form-control input-sm">

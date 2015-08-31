@@ -71,7 +71,7 @@ function crearGrilla() {
         height: 300,
         width: 500,
         caption: "Lista Procedimiento",
-        colNames: ["Edit", "Del", "idprocedimiento", "idarea", "codigo", "denominacion", "plazodias", "idcargoresolutor", "descripcion", "estado"],
+        colNames: ["Edit", "Del", "idprocedimiento", "idarea", "codigo", "denominacion", "plazo(dias)", "idcargoresolutor", "descripcion", "estado"],
         colModel: [
             {
                 name: 'edit',
@@ -119,7 +119,7 @@ function crearGrilla() {
                 name: 'plazodias',
                 index: 'plazodias',
                 editable: false,
-                width: 150,
+                width: 60,
                 hidden: false
             }, {
                 name: 'idcargoresolutor',
@@ -138,7 +138,7 @@ function crearGrilla() {
                 index: 'estado',
                 editable: false,
                 width: 150,
-                hidden: false
+                hidden: true
             }],
         pager: '#pager',
         //onSelectRow: viewGeometry,
@@ -281,5 +281,5 @@ function del(id) {
 }
 function loadCombos() {
     $.CargarCombo(urlApp + '/ProcedimientoController/listObjectProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdarea');
-    $.CargarCombo(urlApp + '/ProcedimientoController/listObjectProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 1}}, '#txtIdcargoresolutor');
+    $.CargarCombo(urlApp + '/ProcedimientoController/listObjectProcedimientoBE.htm', {poProcedimientoBE: {IndOpSp: 2}}, '#txtIdcargoresolutor');
 }

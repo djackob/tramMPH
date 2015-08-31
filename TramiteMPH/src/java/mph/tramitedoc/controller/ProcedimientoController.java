@@ -1,9 +1,6 @@
 package mph.tramitedoc.controller;
 
-
 //@Erick Escalante Olano
-
-
 import mph.tramitedoc.be.ProcedimientoBE;
 import mph.tramitedoc.bl.ProcedimientoBL;
 import com.google.gson.Gson;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 
 @Controller
 @RequestMapping("/ProcedimientoController")
