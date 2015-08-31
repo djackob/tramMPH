@@ -87,7 +87,7 @@ try{
 	cn.setAutoCommit(false);
 	String sql="";
 if (oRolBE1.getIndOpSp() == 1) {
-	sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrol||')\" class=\"fa fa-pencil-square-o\"></i>','<i style=\"cursor:pointer;\" onclick=\"del('||idrol||')\" class=\"fa fa-trash-o\"></i>',idrol,denominacion,estado FROM rol WHERE estado=true";
+	sql = " SELECT '<i style=\"cursor:pointer;\" onclick=\"edit('||idrol||')\" class=\"fa fa-pencil-square-o\"></i>','<i style=\"cursor:pointer;\" onclick=\"del('||idrol||')\" class=\"fa fa-trash-o\"></i>',idrol,denominacion,estado FROM rol WHERE estado=true order by denominacion asc";
 pst = cn.prepareStatement(sql);
 rs = pst.executeQuery();
 }
