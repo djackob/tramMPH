@@ -211,6 +211,10 @@ function actualizar() {
 
                 }
                 
+                if(response==-1){
+                    bootbox.alert(Mensajes.moduloActualizar);
+                }
+                
             });
             break;
         case -1:

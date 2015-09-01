@@ -191,13 +191,16 @@ function actualizar() {
             };
             $.ajaxCall(urlApp + '/RolController/actualizarRolBE.htm', {poRolBE: Rol}, false, function (response) {
                 if (response > 0) {
-
+                    //alert($('#txtDenominacion').val());
                     bootbox.alert(Mensajes.operacionCorrecta);
                     $("#btnNuevo").text('Nuevo');
                     $.DesabilitarForm('#form');
                     $.LimpiarForm('#form');
                     cargarGrilla();
 
+                }
+                if(response==-1){
+                    bootbox.alert(Mensajes.rolActualizar);
                 }
 
 

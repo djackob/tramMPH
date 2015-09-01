@@ -28,7 +28,10 @@ var Mensajes = {
     cargoDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El cargo registrado ya existe.',
     areaDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El area registrado ya existe.',
     moduloDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El módulo que desea registrar ya existe.',
+    moduloActualizar: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El módulo que desea actualizar ya existe.',
     rolDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El rol que desea registrar ya existe.',
+    rolActualizar: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El rol que desea actualizar ya existe.',
+    
     usuarioDuplicado: '<i style="color:red "class="fa fa-exclamation-triangle fa-2x"></i>  El usuario que desea registrar ya existe.',
 };
 
