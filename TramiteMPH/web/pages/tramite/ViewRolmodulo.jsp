@@ -41,12 +41,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Registro de Rol Modulo
-                    <small>Administracion de Usuarios</small>
+                    Registro de Rol Módulo
+                    <small>Administracion de Rol Módulo</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Rol Modulo</a></li>
-                    <li class="active">Registro de Rol Modulo</li>
+                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Rol Módulo</a></li>
+                    <li class="active">Registro de Rol Módulo</li>
                 </ol>
             </section>
 
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de Usuarios</h3>
+                                <h3 class="box-title">Lista de Roles Módulos</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
@@ -72,7 +72,7 @@
                         <form id="form" role="form">
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Registro de Rol Modulo</h3>
+                                    <h3 class="box-title">Registro de Rol Módulo</h3>
                                 </div>
                                 <div class="box-body">
                                     <!-- Date range -->
@@ -81,7 +81,7 @@
                                         <select obligatorio id="txtIdrol" class="form-control input-sm">
                                         </select>
                                     </div> <div class="form-group">
-                                        <label>Modulo :</label>
+                                        <label>Módulo :</label>
                                         <select obligatorio id="txtIdmodulo" class="form-control input-sm">
                                         </select>
                                         <!-- </div>   <div class="form-group">

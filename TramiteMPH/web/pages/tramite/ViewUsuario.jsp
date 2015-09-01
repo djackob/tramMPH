@@ -87,10 +87,10 @@
                                         <input obligatorio solonumeros id="txtDni" class="form-control input-sm" type="text" placeholder="Ingrese Dni" maxlength="12">
                                     </div>   <div class="form-group">
                                         <label>Dirección :</label>
-                                        <input obligatorio id="txtDireccion" class="form-control input-sm" type="text" placeholder="Ingrese Direccion" maxlength="200">
+                                        <input obligatorio id="txtDireccion" class="form-control input-sm" type="text" placeholder="Ingrese Dirección" maxlength="200">
                                     </div>   <div class="form-group">
                                         <label>Teléfono :</label>
-                                        <input obligatorio solonumeros id="txtTelefono" class="form-control input-sm" type="text" placeholder="Ingrese Telefono" maxlength="100">
+                                        <input obligatorio solonumeros id="txtTelefono" class="form-control input-sm" type="text" placeholder="Ingrese Teléfono" maxlength="100">
                                     </div>   <div class="form-group">
                                         <label>Usuario :</label>
                                         <input obligatorio id="txtUsuario" class="form-control input-sm" type="text" placeholder="Ingrese Usuario" maxlength="100">

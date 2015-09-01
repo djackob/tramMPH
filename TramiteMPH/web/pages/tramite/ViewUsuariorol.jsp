@@ -42,7 +42,7 @@
             <section class="content-header">
                 <h1>
                     Registro de Usuario Rol
-                    <small>Administracion de Usuarios</small>
+                    <small>Administracion de Usuario Rol</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-unlock-alt"></i> Usuario Rol</a></li>
@@ -57,7 +57,7 @@
 
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Lista de usuarios</h3>
+                                <h3 class="box-title">Lista de Usuarios Roles</h3>
                             </div>
                             <div id="containerGrilla" class="box-body">
 
